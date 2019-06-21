@@ -32,8 +32,12 @@ class IndexController extends Controller
     }
 
     public function polls()
-    {
-        return view('polls/view');
+    {   
+        $options= DB::table('options')->get();
+        $polls= DB::table('polls')->get();
+        $user_polls = DB::table('user_polls')->where('user_id', '=', Auth::user()->id)->get();
+        // return [$polls,$options,$user_polls];
+        return view('polls/view', compact('options','polls','user_polls'));
     }
 
     public function create()
@@ -44,5 +48,16 @@ class IndexController extends Controller
     public function edit()
     {
         return view('polls/edit');
+    }
+
+    public function viewpoll($pollid) {
+
+        $poll = DB::table('polls')->find($pollid);
+        $options = DB::table('options')->where('poll_id', '=', $pollid)->get();
+              return view('polls/viewpoll',  compact('options', 'poll', 'pollid'));
+    }
+
+    public function vote() {
+        return 'voted';
     }
 }

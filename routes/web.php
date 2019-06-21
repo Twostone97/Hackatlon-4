@@ -18,6 +18,8 @@ Route::get('/poll/create', 'PollController@index');
 Route::post('/poll/create', 'PollController@store');
 Route::get('/poll/{pollid}/edit', 'OptionController@index');
 Route::post('/poll/{pollid}/edit', 'OptionController@store');
+Route::get('/poll/{pollid}/view', 'IndexController@viewpoll');
+Route::post('/poll/{pollid}/view', 'IndexController@vote');
 
 Auth::routes();
 
