@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Poll;
 
 class PollSeeder extends Seeder
 {
@@ -11,6 +12,8 @@ class PollSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Poll::create([
+            'Question'     => 'Jaké chcete počasí?'
+        ]);
     }
 }
