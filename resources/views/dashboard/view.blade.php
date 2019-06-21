@@ -8,7 +8,7 @@
 <h4>Dear {{Auth::user()->name}},</h4>
 <p>This is list of all polls created by you...</p>
     <h1>You have no polls</h1>
-        
+    <a href="/poll/create">Create New Poll</a>
 </div>
 
 @endsection
