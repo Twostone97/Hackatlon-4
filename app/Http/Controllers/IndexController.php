@@ -23,15 +23,14 @@ class IndexController extends Controller
 
     public function dashboard()
     {
-        
         $pollinfo = [];
         $collection = [];
         $polls = DB::table('user_polls')->where('user_id', '=', Auth::user()->id)->get();
         foreach ($polls as $poll) {
             $pollinfo[] = DB::table('polls')->find($poll->id);
             $collection[] = DB::table('options')->where('poll_id', '=', $poll->id)->get();
+            $haspoll = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id], ['is_owner', '=', 1]])->orderBy('is_owner', 'desc')->first();
         }
-        $haspoll = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id],['poll_id', '=', $poll->id],['is_owner', '=', 1]])->first();
         return view('dashboard/view', compact('polls', 'pollinfo', 'collection', 'haspoll'));
     }
 
@@ -58,7 +57,7 @@ class IndexController extends Controller
         $poll = DB::table('polls')->find($pollid);
         $options = DB::table('options')->where('poll_id', '=', $pollid)->get();
 
-        $isin = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id],['poll_id', '=', $poll->id]])->first();
+        $isin = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id],['poll_id', '=', $poll->id]])->orderBy('is_owner', 'desc')->first();
         if (empty($isin->id)) {
             $done = false;
         } else {
