@@ -78,6 +78,6 @@ class IndexController extends Controller
         $user_poll->poll_id = $request->poll_id;
         $user_poll->is_owner = false;
         $user_poll->save();
-        return redirect(action('IndexController@dashboard'));
+        return redirect(action('IndexController@viewpoll', compact('pollid')));
     }
 }
