@@ -23,6 +23,7 @@ class IndexController extends Controller
 
     public function dashboard()
     {
+        
         $pollinfo = [];
         $collection = [];
         $polls = DB::table('user_polls')->where('user_id', '=', Auth::user()->id)->get();
@@ -30,7 +31,8 @@ class IndexController extends Controller
             $pollinfo[] = DB::table('polls')->find($poll->id);
             $collection[] = DB::table('options')->where('poll_id', '=', $poll->id)->get();
         }
-        return view('dashboard/view', compact('polls', 'pollinfo', 'collection'));
+        $haspoll = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id],['poll_id', '=', $poll->id],['is_owner', '=', 1]])->first();
+        return view('dashboard/view', compact('polls', 'pollinfo', 'collection', 'haspoll'));
     }
 
     public function polls()
