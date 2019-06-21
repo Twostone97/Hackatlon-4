@@ -25,10 +25,10 @@ class IndexController extends Controller
     {
         $pollinfo = [];
         $collection = [];
-        $polls = DB::table('user_polls')->where('user_id', '=', Auth::user()->id)->get();
+        $polls = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id], ['is_owner', '=', 1]])->get();
         foreach ($polls as $poll) {
-            $pollinfo[] = DB::table('polls')->find($poll->id);
-            $collection[] = DB::table('options')->where('poll_id', '=', $poll->id)->get();
+            $pollinfo[] = DB::table('polls')->find($poll->poll_id);
+            $collection[] = DB::table('options')->where('poll_id', '=', $poll->poll_id)->get();
             $haspoll = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id], ['is_owner', '=', 1]])->orderBy('is_owner', 'desc')->first();
         }
         return view('dashboard/view', compact('polls', 'pollinfo', 'collection', 'haspoll'));
