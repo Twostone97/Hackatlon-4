@@ -44,6 +44,7 @@
         </div>
         @endforeach
     </div>
+    <a href="/poll/create">Create New Poll</a>
 </div>
 
 @endsection
