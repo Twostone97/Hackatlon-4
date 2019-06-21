@@ -4,28 +4,25 @@
     <div class="container">
         <h1>Edit answers to your poll</h1>
         <p>Without answers there would be no polling</p>
-        <h4>Question: What is the meaning of univers</h4>
+        <h4>Question: {{ $poll->Question }}</h4>
         <br>
 
         <table>
             <tr>
-                <th>#</th>
-                <th>text</th>
+                <th>Options</th>
             </tr>
+            @foreach ($options as $option)
             <tr>
-                    <td>1</td>
-                    <td>Some previously typed answer</td>
-                </tr>
-                <tr>
-                        <td>1</td>
-                        <td>Some previously typed answer</td>
-                    </tr>
+                <td>{{$option->Answer}}</td>
+            </tr>
+            @endforeach
         </table>
         <br>
         <br>    
         <h6>Add more answers</h6>
         <div class="poll__create">
         <form action="" method="POST">
+            @csrf
             <label for="question">Answer: <input type="text" name="Answer" id="answer" ></label>
             <input type="submit" value="Ad">
         </form>
