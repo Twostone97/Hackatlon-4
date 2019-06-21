@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Owner;
+use App\UserPoll;
 use Illuminate\Http\Request;
 
-class OwnerController extends Controller
+class UserPollController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class OwnerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Owner  $owner
+     * @param  \App\UserPoll  $userPoll
      * @return \Illuminate\Http\Response
      */
-    public function show(Owner $owner)
+    public function show(UserPoll $userPoll)
     {
         //
     }
@@ -52,10 +52,10 @@ class OwnerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Owner  $owner
+     * @param  \App\UserPoll  $userPoll
      * @return \Illuminate\Http\Response
      */
-    public function edit(Owner $owner)
+    public function edit(UserPoll $userPoll)
     {
         //
     }
@@ -64,10 +64,10 @@ class OwnerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Owner  $owner
+     * @param  \App\UserPoll  $userPoll
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Owner $owner)
+    public function update(Request $request, UserPoll $userPoll)
     {
         //
     }
@@ -75,10 +75,10 @@ class OwnerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Owner  $owner
+     * @param  \App\UserPoll  $userPoll
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Owner $owner)
+    public function destroy(UserPoll $userPoll)
     {
         //
     }
