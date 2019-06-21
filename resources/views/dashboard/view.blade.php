@@ -20,8 +20,9 @@
     <br>
 <h4>Dear {{Auth::user()->name}},</h4>
 <p>This is list of all polls created by you...</p>
-    <div class="poll__detail">
-        @foreach ($pollinfo as $poll)
+@foreach ($pollinfo as $poll)    
+<div class="poll__detail">
+        
         <div><p><span class="poll__detail__question">Question text:</span><br><span class="poll__detail__question__text"><a href="/poll/{{$poll->id}}/edit">{{$poll->Question}}</a><span></p></div>
             <a href="/poll/{{$poll->id}}/edit">EDIT</a>
         <div style="flex: 0 0 50%">
@@ -42,8 +43,9 @@
                 @endforeach
             </table>
         </div>
-        @endforeach
+        
     </div>
+    @endforeach
     <a href="/poll/create">Create New Poll</a>
 </div>
 
