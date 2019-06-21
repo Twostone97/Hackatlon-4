@@ -19,7 +19,8 @@
             <p><strong>Question text: </strong>{{$poll->Question}}</p>
         <a href="/poll/{{$poll->id}}/view"><button>Go to poll</button></a>
         </div>
+        @endforeach
     </div>
-    @endforeach
+    
     
 @endsection  

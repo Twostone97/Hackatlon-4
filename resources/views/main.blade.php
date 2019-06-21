@@ -36,7 +36,7 @@
 
             .top-right {
                 position: absolute;
-                right: 45%;
+                align-self: center;
                 top: 5vmin;
             }
 
@@ -68,7 +68,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/polls') }}">Polls</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
