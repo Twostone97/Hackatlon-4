@@ -68,7 +68,7 @@ class IndexController extends Controller
               return view('polls/viewpoll',  compact('options', 'poll', 'pollid', 'done'));
     }
 
-    public function vote(Request $request) {
+    public function vote(Request $request, $pollid) {
         $option = Option::find($request->id);
         $option->votes++;
         $option->save();
