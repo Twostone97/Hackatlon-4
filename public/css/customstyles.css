@@ -7,19 +7,27 @@ body {
 }
 * {
     box-sizing: border-box;
-    color:white;
 }
 
 main {
     background-color: rgba(0, 0, 0,0.4);
     min-height: 100vh;
+    color:white;
 }
 
 .navbar.bg-white-custom{
     background-color: rgba(255, 255, 255,0.6)
 }
 
+.logged__user {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
 #app {
+    color:black;
+}
+
+.login {
     color:black;
 }
 
@@ -33,6 +41,39 @@ main {
     width: 60px;
 }
 
-button {
-    color:black;
+
+
+.poll__detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255,0.2);
+    padding: 1rem;
+    margin: 1rem auto;
+}
+
+.poll__detail__question {
+    font-size: 1rem;
+    color:rgba(255,255, 255,0.7);
+    font-weight: bold;
+}
+.poll__detail__question__text {
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
+.poll__detail__question__text a {
+    font-size: 1.5rem;
+    font-style: italic;
+    color:white;
+    text-decoration: none;
+    cursor:pointer;
+}
+
+.poll__detail__question__text a:hover {
+    text-decoration: underline;
+}
+
+.poll__detail table {
+    width: 100%;
 }

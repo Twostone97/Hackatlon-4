@@ -2,22 +2,16 @@
 
 @section('content')
     <div class="container">
-        <h1>Polls overview</h1>
+        <h1>Polls list</h1>
         <p>This is list of all created by our users...</p>
         @foreach ($polls as $poll)
-        {{--  
-        for ($i=0;$i<count($user_polls);$i++) {
-            if($user_polls[$i]->poll_id === $poll->id) {
-                $answered=true;
-                break;
-            }
-        }
-         --}}
         
         <div class="poll__detail">
-            <h6>#1</h6>
-            <p><strong>Question text: </strong>{{$poll->Question}}</p>
-        <a href="/poll/{{$poll->id}}/view"><button>Go to poll</button></a>
+            <div>
+                <p><span class="poll__detail__question">Question text: </span><br>
+            <span class="poll__detail__question__text">{{$poll->Question}}</span></p>
+            </div>
+        <div><a href="/poll/{{$poll->id}}/view"><button class="btn btn-primary">Go to poll</button></a></div>
         </div>
         @endforeach
     </div>
