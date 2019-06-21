@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use Auth;
+use App\Option;
+use App\UserPoll;
 
 class IndexController extends Controller
 {
@@ -36,7 +38,6 @@ class IndexController extends Controller
         $options= DB::table('options')->get();
         $polls= DB::table('polls')->get();
         $user_polls = DB::table('user_polls')->where('user_id', '=', Auth::user()->id)->get();
-        // return [$polls,$options,$user_polls];
         return view('polls/view', compact('options','polls','user_polls'));
     }
 
@@ -54,10 +55,27 @@ class IndexController extends Controller
 
         $poll = DB::table('polls')->find($pollid);
         $options = DB::table('options')->where('poll_id', '=', $pollid)->get();
-              return view('polls/viewpoll',  compact('options', 'poll', 'pollid'));
+
+        $isin = DB::table('user_polls')->where([['user_id', '=', Auth::user()->id],['poll_id', '=', $poll->id]])->first();
+        if (empty($isin->id)) {
+            $done = false;
+        } else {
+            $done = true;
+        }
+
+              return view('polls/viewpoll',  compact('options', 'poll', 'pollid', 'done'));
     }
 
-    public function vote() {
-        return 'voted';
+    public function vote(Request $request) {
+        $option = Option::find($request->id);
+        $option->votes++;
+        $option->save();
+
+        $user_poll = new UserPoll;
+        $user_poll->user_id = Auth::user()->id;
+        $user_poll->poll_id = $request->poll_id;
+        $user_poll->is_owner = false;
+        $user_poll->save();
+        return redirect(action('IndexController@dashboard'));
     }
 }
