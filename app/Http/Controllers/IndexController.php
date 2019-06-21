@@ -10,4 +10,24 @@ class IndexController extends Controller
     {
         return view('main');
     }
+
+    public function dashboard()
+    {
+        return view('dashboard/view');
+    }
+
+    public function polls()
+    {
+        return view('polls/view');
+    }
+
+    public function create()
+    {
+        return view('polls/create');
+    }
+
+    public function edit()
+    {
+        return view('polls/edit');
+    }
 }

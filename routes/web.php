@@ -12,7 +12,13 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/dashboard', 'IndexController@dashboard');
+Route::get('/polls', 'IndexController@polls');
+Route::get('/poll/create', 'IndexController@create');
+Route::get('/poll/1/edit', 'IndexController@edit');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
