@@ -54,7 +54,7 @@ class PollController extends Controller
         $user_poll->poll_id = $lastPoll->id;
         $user_poll->is_owner = true;
         $user_poll->save();
-        return view('IndexController@dashboard');
+        return redirect(action('IndexController@dashboard'));
     }
 
     /**
