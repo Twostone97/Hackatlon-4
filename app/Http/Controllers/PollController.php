@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Poll;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 use App\UserPoll;
 
 class PollController extends Controller
@@ -50,7 +51,9 @@ class PollController extends Controller
 
         $user_poll = new UserPoll;
         $user_poll->user_id = Auth::user()->id;
-        $user_poll->poll_id = $lastPoll;
+        $user_poll->poll_id = $lastPoll->id;
+        $user_poll->is_owner = true;
+        $user_poll->save();
         return view('IndexController@dashboard');
     }
 
