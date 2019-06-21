@@ -9,6 +9,11 @@ use App\UserPoll;
 
 class PollController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +45,12 @@ class PollController extends Controller
         $poll = new Poll;
         $poll->Question = $request->Question;
         $poll->save();
+
+        $lastPoll = DB::table('polls')->orderBy('id', 'desc')->first();
+
+        $user_poll = new UserPoll;
+        $user_poll->user_id = Auth::user()->id;
+        $user_poll->poll_id = $lastPoll;
         return view('IndexController@dashboard');
     }
 
