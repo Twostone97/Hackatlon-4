@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Option;
+use DB;
 use Illuminate\Http\Request;
 
 class OptionController extends Controller
@@ -12,9 +13,11 @@ class OptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($pollid)
     {
-        //
+        $poll = DB::table('polls')->find($pollid);
+        $options = DB::table('options')->where('poll_id', '=', $pollid)->get();
+        return view('polls/edit', compact('options', 'poll', 'pollid'));
     }
 
     /**
@@ -33,9 +36,15 @@ class OptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $pollid)
     {
-        //
+        $option = new Option;
+        $option->Answer = $request->Answer;
+        $option->poll_id = $pollid;
+        $option->votes = 0;
+        $option->save();
+
+        return view('OptionController@index');
     }
 
     /**

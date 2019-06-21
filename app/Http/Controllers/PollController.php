@@ -16,7 +16,7 @@ class PollController extends Controller
      */
     public function index()
     {
-        //
+        return view('polls/create');
     }
 
     /**
@@ -37,7 +37,10 @@ class PollController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $poll = new Poll;
+        $poll->Question = $request->Question;
+        $poll->save();
+        return view('IndexController@dashboard');
     }
 
     /**

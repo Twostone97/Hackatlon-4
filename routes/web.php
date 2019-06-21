@@ -14,8 +14,10 @@
 Route::get('/', 'IndexController@index');
 Route::get('/dashboard', 'IndexController@dashboard');
 Route::get('/polls', 'IndexController@polls');
-Route::get('/poll/create', 'IndexController@create');
-Route::get('/poll/1/edit', 'IndexController@edit');
+Route::get('/poll/create', 'PollController@index');
+Route::post('/poll/create', 'PollController@store');
+Route::get('/poll/{pollid}/edit', 'OptionController@index');
+Route::post('/poll/{pollid}/edit', 'OptionController@store');
 
 Auth::routes();
 
