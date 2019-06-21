@@ -9,7 +9,7 @@
 
         <table>
             <tr>
-                <th>Options</th>
+                <th>Options</th><br>
             </tr>
             @foreach ($options as $option)
             <tr>

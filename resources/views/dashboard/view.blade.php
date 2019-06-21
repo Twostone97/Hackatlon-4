@@ -6,23 +6,22 @@
         <p>This is list of all created by you...</p>
         <div class="poll__detail">
             <h6>#1</h6>
-            <p><strong>Question text: </strong>What is the meaning of life?</p>
+            @foreach ($pollinfo as $poll)
+            <p><strong>Question text: </strong>{{$poll->Question}}</p>
+            @endforeach
             <table>
                 <tr>
-                    <th>Option</th>
                     <th>Text</th>
                     <th>Votes</th>
                 </tr>
+                @foreach ($collection as $options)
+                @foreach ($options as $option)
                 <tr>
-                    <td>#1</td>
-                    <td>It is 42</td>
-                    <td>323</td>
+                    <td>{{$option->Answer}}</td>
+                    <td>{{$option->votes}}</td>
                 </tr>
-                <tr>
-                        <td>#1</td>
-                        <td>Happiness and eternal satisfaction</td>
-                        <td>42</td>
-                    </tr>
+                @endforeach
+                @endforeach
             </table>
             
         </div>
