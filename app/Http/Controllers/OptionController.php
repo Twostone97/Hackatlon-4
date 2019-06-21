@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Option;
 use DB;
+use Auth;
 use Illuminate\Http\Request;
 
 class OptionController extends Controller
@@ -22,7 +23,15 @@ class OptionController extends Controller
     {
         $poll = DB::table('polls')->find($pollid);
         $options = DB::table('options')->where('poll_id', '=', $pollid)->get();
-        return view('polls/edit', compact('options', 'poll', 'pollid'));
+        $user_polls = DB::table('user_polls')->where([['poll_id', '=', $pollid], ['is_owner', '=', 1]])->get();
+        foreach ($user_polls as $one) {
+            if ($one->user_id == Auth::user()->id) {
+                $canedit = true;
+            } else {
+                $canedit = false;
+            }
+        }
+        return view('polls/edit', compact('options', 'poll', 'pollid', 'canedit'));
     }
 
     /**

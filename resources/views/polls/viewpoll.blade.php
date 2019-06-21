@@ -7,7 +7,8 @@
         <br>
         <table>
             <tr>
-                <th>Options</th><br>
+                <th>Options</th>
+                <th>Votes</th>
             </tr>
             @foreach ($options as $option)
             <tr>

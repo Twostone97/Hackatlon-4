@@ -18,13 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="css/customstyles.css">
+    <link href="{{ asset('css/customstyles.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="css/customstyles.css"> --}}
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white-custom shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/polls') }}">
                     <img src="img/question-mark.svg" alt="logo" id="project__logo">
                     Crazy Polls 
                 </a>
@@ -66,6 +67,11 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+
+                                    <a class="dropdown-item" href="/dashboard">My Polls</a>
+                                    
+                                                  
+                                 </a>
                                 </div>
                             </li>
                         @endguest

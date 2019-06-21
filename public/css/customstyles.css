@@ -78,3 +78,17 @@ main {
 .poll__detail table {
     width: 100%;
 }
+
+table, td, th {  
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 20px;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
