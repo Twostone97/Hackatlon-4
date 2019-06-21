@@ -49,7 +49,7 @@ class OptionController extends Controller
         $option->votes = 0;
         $option->save();
 
-        return redirect(action('OptionController@index'));
+        return redirect(action('OptionController@index', compact('pollid')));
     }
 
     /**
